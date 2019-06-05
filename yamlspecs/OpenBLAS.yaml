@@ -1,0 +1,23 @@
+---
+- package: OpenBLAS 
+  name: OpenBLAS 
+  version: 0.2.20 
+  extension: tar.gz
+  vendor_source: http://github.com/xianyi/OpenBLAS/archive/v0.2.20.tar.gz 
+  compiler: gcc
+  compiler_version: "6.5.0"
+  pkgname: "{{ name }}_{{version}}"
+  description: >
+    OpenBLAS {{ version }}. 
+    OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
+  root: "{{ pkg_defaults.foundation }}/{{ name }}/{{ version }}"
+  build:
+    configure: echo 
+    modules: "{{ compiler }}/{{ compiler_version }}"
+    pkgmake: make 
+    target: 
+  install:
+    makeinstall: $(MAKE) DESTDIR=$(ROOT) PREFIX={{root}} install
+    installextra: $(INSTALL) -m 644  *md  Goto*txt $(ROOT)/{{ root }}
+  files:
+    -  "{{ root }}"

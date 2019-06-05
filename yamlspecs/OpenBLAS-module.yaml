@@ -1,0 +1,23 @@
+# Builds the module for OpenBLAS. It first includes all the definitions
+# for the OpenBLAS build and then overwrites specific keys
+!include OpenBLAS.yaml
+!include /opt/rcic/include/rcic-module.yaml
+---
+- package: OpenBLAS Module
+  pkgname: "{{ name }}_{{version}}-module"
+  description: >
+    module for {{ name }} version {{ version }} compiled with
+    {{ compiler }} {{ compiler_version }}.  The environment variable
+    OPENBLAS_HOME can be used for compilation 
+  module:
+    name: "{{ version }}"
+    path: "{{ pkg_defaults.module.path }}/{{ name }}"
+    setenv:
+      - OPENBLAS_HOME {{ root }}
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+    prereq: 
+      - "{{compiler}}/{{ compiler_version }}"
+  requires:
+    - "{{ name }}_{{ version }}"
+    - rcic-module-support
