@@ -1,0 +1,19 @@
+# Builds the module for gsl. It first includes all the definitions
+# for the gsl build and then overwrites specific keys
+!include gsl.yaml
+!include /opt/rcic/include/rcic-module.yaml
+---
+- package: gsl Module
+  pkgname: "{{ name }}_{{version}}_{{ compiler }}_{{ compiler_version }}-module"
+  no_src_dir: True
+  src_tarball: none
+  module:
+    name: "{{ version }}"
+    path: "{{ pkg_defaults.module.path }}/{{ name }}/{{ compiler }}/{{ compiler_version }}"
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+    setenv:
+      - BOOST_HOME {{ root }}
+  requires:
+    - "{{ name }}_{{ version }}_{{ compiler }}_{{compiler_version}}"
+    - rcic-module-support
