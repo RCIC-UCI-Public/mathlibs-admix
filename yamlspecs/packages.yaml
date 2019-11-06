@@ -5,5 +5,7 @@ build:
    - OpenBLAS-module
    - gsl
    - gsl-module
+   - mkl
+   - mkl-module
 manifest:
    - "{{ build }}"

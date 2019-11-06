@@ -1,3 +1,8 @@
 gcc: "8.3.0"
 gsl: "2.5"
 OpenBLAS: "0.3.6"
+mkl:
+  version: "2019.5.281"
+  rpmversion: "2019.5-281"
+  rpmpath: /opt/intel
+  toolclass: "compilers_and_libraries_{{ versions.mkl.version }}"
