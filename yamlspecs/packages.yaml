@@ -1,0 +1,9 @@
+system:
+bootstrap:
+build:
+   - OpenBLAS
+   - OpenBLAS-module
+   - gsl
+   - gsl-module
+manifest:
+   - "{{ build }}"

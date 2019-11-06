@@ -5,13 +5,15 @@
 ---
 - package: OpenBLAS Module
   pkgname: "{{ name }}_{{version}}-module"
-  description: >
+  category: LIBRARIES
+  description: |
     module for {{ name }} version {{ version }} compiled with
     {{ compiler }} {{ compiler_version }}.  The environment variable
-    OPENBLAS_HOME can be used for compilation 
+    Environment Variables:
+        OPENBLAS_HOME = {{ root }} 
   module:
     name: "{{ version }}"
-    path: "{{ pkg_defaults.module.path }}/{{ name }}"
+    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{ name }}"
     setenv:
       - OPENBLAS_HOME {{ root }}
     prepend_path:

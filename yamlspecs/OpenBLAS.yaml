@@ -2,10 +2,11 @@
 - package: OpenBLAS 
   name: OpenBLAS 
   version: 0.3.6 
+  versions: !include versions.yaml
   extension: tar.gz
   vendor_source: http://github.com/xianyi/OpenBLAS/archive/v{{version}}.tar.gz 
   compiler: gcc
-  compiler_version: "6.5.0"
+  compiler_version: "{{ versions.gcc }}"
   pkgname: "{{ name }}_{{version}}"
   description: >
     OpenBLAS {{ version }}. 
@@ -13,7 +14,8 @@
   root: "{{ pkg_defaults.foundation }}/{{ name }}/{{ version }}"
   build:
     configure: echo 
-    # modules: "{{ compiler }}/{{ compiler_version }}"
+    modules: 
+      - "{{ compiler }}/{{ compiler_version }}"
     pkgmake: make 
     target: 
   install:
