@@ -7,6 +7,7 @@
   rpmpath: "{{ versions.mkl.rpmpath }}"
   rpmversion: "{{ versions.mkl.rpmversion }}"
   toolclass: "{{ versions.mkl.toolclass }}"
+  release: 2
   
   src_dir: l_{{ name }}_{{ version }}
   src_tarball: "{{ src_dir }}.{{ extension }}"
@@ -30,5 +31,12 @@
     -  "{{ root }}"
   requires:
     - intel-mkl-cluster-{{ rpmversion }}
+    - intel-mkl-cluster-c-{{ rpmversion }}
+    - intel-mkl-cluster-f-{{ rpmversion }}
     - intel-mkl-common-{{ rpmversion }}
+    - intel-mkl-common-c-{{ rpmversion }}
+    - intel-mkl-common-f-{{ rpmversion }}
+    - intel-mkl-f95-common-{{ rpmversion }}
     - intel-mkl-core-{{ rpmversion }}
+    - intel-mkl-core-c-{{ rpmversion }}
+    - intel-mkl-core-f-{{ rpmversion }}

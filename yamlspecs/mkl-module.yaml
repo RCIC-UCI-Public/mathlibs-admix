@@ -9,6 +9,7 @@
   no_src_dir: True
   src_tarball: none
   toolpath: "{{ rpmpath }}/{{ toolclass }}/linux"  
+  release: 2
   description: |
     This provides access to Intel's Math Kernel Libraries version {{ version }}.
     You MAY have to execute the following command to set up all the environment variables
@@ -30,8 +31,8 @@
       - MKL_INCLUDE_DIR {{ toolpath }}/mkl/include
       - MANPATH {{ toolpath }}/share/man
       - PKG_CONFIG_PATH {{ toolpath }}/mkl/bin/pkgconfig
-      - -d  LDFLAGS -L{{ toolpath}}/mkl/lib
-      - -d  CPPFLAGS -I {{ toolpath }}/mkl/include
+      - -d  " " LDFLAGS -L{{ toolpath}}/mkl/lib/intel64_lin
+      - -d  " " CPPFLAGS -I {{ toolpath }}/mkl/include
       - LD_RUN_PATH {{ toolpath }}/mkl/lib
   requires:
     - "{{ name }}_{{ version }}"
