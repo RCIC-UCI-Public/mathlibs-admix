@@ -7,14 +7,17 @@
   pkgname: "{{ name }}_{{version}}_{{ compiler }}_{{ compiler_version }}-module"
   category: LIBRARIES
   no_src_dir: True
+  release: 2
   src_tarball: none
   module:
-    name: "{{ compiler_version }}"
-    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{ name }}/{{ version }}/{{ compiler }}"
+    name: "{{ compiler }}.{{ compiler_version }}"
+    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{ name }}/{{ version }}"
     prepend_path:
       - "{{ pkg_defaults.module.prepend_path }}"
     setenv:
       - GSL_HOME {{ root }}
+    prereq:
+      - "{{ compiler }}/{{ compiler_version }}"
   requires:
     - "{{ name }}_{{ version }}_{{ compiler }}_{{compiler_version}}"
     - rcic-module-support
