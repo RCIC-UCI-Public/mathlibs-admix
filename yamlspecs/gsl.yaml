@@ -1,26 +1,24 @@
+!include rcic-package.yaml
 ---
 - package: Gnu Scientific Library 
   name: gsl 
   versions: !include versions.yaml 
-  version: "{{ versions.gsl }}"
-  compiler: gcc
-  compiler_version: "{{ versions.gcc }}"
-  extension: tar.gz
-  vendor_source: http://gnu.mirrors.pair.com/{{ name }}/{{ name }}-{{ version }}.tar.gz 
+  version: "{{versions.gsl}}"
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+  vendor_source: http://gnu.mirrors.pair.com/{{name}}/{{name}}-{{version}}.{{extension}}
   description: >
     GNU Scientific Library 
-  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{ version }}/{{ compiler }}/{{ compiler_version }}"
-  pkgname: "{{ name }}_{{ version }}_{{ compiler }}_{{ compiler_version }}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   build:
     modules: 
-      - "{{ compiler }}/{{ compiler_version }}"
+      - "{{compiler}}/{{compiler_version}}"
     target: 
   install:
      makeinstall: >
        make DESTDIR=$(ROOT) install
-     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{ root }} 
-  files:
-    -  "{{ root }}"
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
   requires:
-    - "{{ compiler }}_{{ compiler_version }}" 
+    - "{{compiler}}_{{compiler_version}}" 
   rpm: !include rpm.extras.yaml

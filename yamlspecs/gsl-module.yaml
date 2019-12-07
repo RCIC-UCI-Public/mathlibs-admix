@@ -1,23 +1,23 @@
-# Builds the module for gsl. It first includes all the definitions
-# for the gsl build and then overwrites specific keys
+# Builds the module for gsl.
 !include gsl.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: gsl Module
-  pkgname: "{{ name }}_{{version}}_{{ compiler }}_{{ compiler_version }}-module"
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}-module"
   category: LIBRARIES
-  no_src_dir: True
   release: 2
-  src_tarball: none
+  modinstdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
+  specs: "{{compiler}}.{{compiler_version}}"
   module:
-    name: "{{ compiler }}.{{ compiler_version }}"
-    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{ name }}/{{ version }}"
-    prepend_path:
-      - "{{ pkg_defaults.module.prepend_path }}"
+    name: "{{specs}}"
+    logname: "{{name}}/{{version}}/{{specs}}"
+    path: "{{modinstdir}}/{{version}}"
     setenv:
-      - GSL_HOME {{ root }}
+      - GSL_HOME root}}
     prereq:
-      - "{{ compiler }}/{{ compiler_version }}"
+      - "{{compiler}}/{{compiler_version}}"
   requires:
-    - "{{ name }}_{{ version }}_{{ compiler }}_{{compiler_version}}"
+    - "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
     - rcic-module-support
+  files:
+    - "{{modinstdir}}"
