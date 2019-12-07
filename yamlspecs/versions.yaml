@@ -1,4 +1,6 @@
-gcc: "8.3.0"
+compiler:
+  name: gcc
+  version: "8.3.0"
 gsl: "2.5"
 OpenBLAS: "0.3.6"
 mkl:

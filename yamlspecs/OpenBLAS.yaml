@@ -5,8 +5,8 @@
   versions: !include versions.yaml
   version: "{{versions.OpenBLAS}}"
   vendor_source: http://github.com/xianyi/OpenBLAS/archive/v{{version}}.{{extension}}
-  compiler: gcc
-  compiler_version: "{{ versions.gcc }}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
   pkgname: "{{ name }}_{{version}}"
   description: |
     OpenBLAS {{ version }}. 
