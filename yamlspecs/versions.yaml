@@ -8,4 +8,4 @@ mkl:
   ompversion: "19.0.5-281"
   rpmversion: "2019.5-281"
   rpmpath: /opt/intel
-  toolclass: "compilers_and_libraries_{{ versions.mkl.version }}"
+  toolclass: "compilers_and_libraries_{{versions.mkl.version}}"

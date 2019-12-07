@@ -8,4 +8,4 @@ build:
    - mkl
    - mkl-module
 manifest:
-   - "{{ build }}"
+   - "{{build}}"

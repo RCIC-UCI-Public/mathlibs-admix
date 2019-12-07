@@ -7,16 +7,16 @@
   vendor_source: http://github.com/xianyi/OpenBLAS/archive/v{{version}}.{{extension}}
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  pkgname: "{{ name }}_{{version}}"
+  pkgname: "{{name}}_{{version}}"
   description: |
-    OpenBLAS {{ version }}. 
+    OpenBLAS {{version}}. 
     OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
   build:
     configure: echo 
     modules: 
-      - "{{ compiler }}/{{ compiler_version }}"
+      - "{{compiler}}/{{compiler_version}}"
     pkgmake: make 
     target: 
   install:
     makeinstall: $(MAKE) DESTDIR=$(ROOT) PREFIX={{root}} install
-    installextra: $(INSTALL) -m 644  *md  Goto*txt $(ROOT)/{{ root }}
+    installextra: $(INSTALL) -m 644  *md  Goto*txt $(ROOT)/{{root}}
