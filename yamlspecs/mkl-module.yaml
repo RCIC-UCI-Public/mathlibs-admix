@@ -1,39 +1,31 @@
-# Builds the module for gsl. It first includes all the definitions
-# for the gsl build and then overwrites specific keys
+# Builds the module for mkl. 
 !include mkl.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: mkl Module
-  pkgname: "{{ name }}_{{version}}-module"
   category: LIBRARIES
-  no_src_dir: True
-  src_tarball: none
-  toolpath: "{{ rpmpath }}/{{ toolclass }}/linux"  
+  toolpath: "{{rpmpath}}/{{toolclass}}/linux"  
   release: 2
   description: |
-    This provides access to Intel's Math Kernel Libraries version {{ version }}.
+    This provides access to Intel's Math Kernel Libraries version {{version}}.
     You MAY have to execute the following command to set up all the environment variables
     to use the library
          compilervars.sh -arch intel64 -platform linux
          mklvars.sh intel64
   module:
-    name: "{{ version }}"
-    path: "{{ pkg_defaults.module.RCICmpath }}/{{category}}/{{ name }}"
     prepend_path:
-      - PATH {{ toolpath }}/mkl/bin
-      - PATH {{ toolpath }}/bin
-      - LD_LIBRARY_PATH  {{ toolpath }}/lib
-      - LD_LIBRARY_PATH  {{ toolpath }}/mkl/lib/intel64
-      - LIBRARY_PATH  {{ toolpath }}/lib
-      - LIBRARY_PATH  {{ toolpath }}/mkl/lib/intel64
-      - CPATH {{ toolpath }}/mkl/include
-      - MKL_LIBRARIES {{ toolpath }}/mkl/lib/intel64
-      - MKL_INCLUDE_DIR {{ toolpath }}/mkl/include
-      - MANPATH {{ toolpath }}/share/man
-      - PKG_CONFIG_PATH {{ toolpath }}/mkl/bin/pkgconfig
-      - -d  " " LDFLAGS -L{{ toolpath}}/mkl/lib/intel64_lin
-      - -d  " " CPPFLAGS -I {{ toolpath }}/mkl/include
-      - LD_RUN_PATH {{ toolpath }}/mkl/lib
+      - PATH {{toolpath}}/mkl/bin
+      - PATH {{toolpath}}/bin
+      - LD_LIBRARY_PATH  {{toolpath}}/mkl/lib/intel64
+      - LIBRARY_PATH  {{toolpath}}/lib
+      - LIBRARY_PATH  {{toolpath}}/mkl/lib/intel64
+      - CPATH {{toolpath}}/mkl/include
+      - MKL_LIBRARIES {{toolpath}}/mkl/lib/intel64
+      - MKL_INCLUDE_DIR {{toolpath}}/mkl/include
+      - PKG_CONFIG_PATH {{toolpath}}/mkl/bin/pkgconfig
+      - -d  " " LDFLAGS -L{{toolpath}}/mkl/lib/intel64
+      - -d  " " CPPFLAGS -I {{toolpath}}/mkl/include
+      - LD_RUN_PATH {{toolpath}}/mkl/lib
   requires:
-    - "{{ name }}_{{ version }}"
+    - "{{name}}_{{version}}"
     - rcic-module-support
