@@ -1,25 +1,24 @@
-
+!include rcic-package.yaml
 ---
 - package: intel Math Kernel Library
   name: mkl 
   versions: !include versions.yaml 
-  version: "{{ versions.mkl.version }}"
-  rpmpath: "{{ versions.mkl.rpmpath }}"
-  rpmversion: "{{ versions.mkl.rpmversion }}"
-  toolclass: "{{ versions.mkl.toolclass }}"
+  version: "{{versions.mkl.version}}"
+  pkgname: "{{name}}_{{version}}"
+  rpmpath: "{{versions.mkl.rpmpath}}"
+  rpmversion: "{{versions.mkl.rpmversion}}"
+  toolclass: "{{versions.mkl.toolclass}}"
   release: 2
-  
-  src_dir: l_{{ name }}_{{ version }}
-  src_tarball: "{{ src_dir }}.{{ extension }}"
+  src_dir: l_{{name}}_{{version}}
+  src_tarball: "{{src_dir}}.{{extension}}"
   extension: tgz
-  vendor_source: http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15816/{{ src_tarball }}
+  vendor_source: http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15816/{{src_tarball}}
   description: |
-     Intel Math Kernel Library version {{ version }}.  This is a meta package that unpacks the Intel
+     Intel Math Kernel Library version {{version}}.  This is a meta package that unpacks the Intel
      public distribution tarball to extract the RPMs, and then lists a foundation set of the RPMs as 
-     requirements. The Intel-supplied RPMS have their default locations of  {{ rpmpath }}, which might differ
-     from the usual application path  ({{ pkg_defaults.app_path }}) on this system. 
-  root: "{{ rpmpath }}/{{ name }}/{{ version }}"
-  pkgname: "{{ name }}_{{ version }}"
+     requirements. The Intel-supplied RPMS have their default locations of  {{rpmpath}}, which might differ
+     from the usual application path  ({{pkg_defaults.app_path}}) on this system. 
+  root: "{{rpmpath}}"
   build:
     configure: echo no configure required
     pkgmake: echo Unpack Tarball only
@@ -28,15 +27,15 @@
      makeinstall: >
         for p in $$(find rpm -type f -name '*rpm'); do mv $$p $(REDHAT.RPMS)/$(ARCH); done
   files:
-    -  "{{ root }}"
+    -  "{{root}}"
   requires:
-    - intel-mkl-cluster-{{ rpmversion }}
-    - intel-mkl-cluster-c-{{ rpmversion }}
-    - intel-mkl-cluster-f-{{ rpmversion }}
-    - intel-mkl-common-{{ rpmversion }}
-    - intel-mkl-common-c-{{ rpmversion }}
-    - intel-mkl-common-f-{{ rpmversion }}
-    - intel-mkl-f95-common-{{ rpmversion }}
-    - intel-mkl-core-{{ rpmversion }}
-    - intel-mkl-core-c-{{ rpmversion }}
-    - intel-mkl-core-f-{{ rpmversion }}
+    - intel-mkl-cluster-{{rpmversion}}
+    - intel-mkl-cluster-c-{{rpmversion}}
+    - intel-mkl-cluster-f-{{rpmversion}}
+    - intel-mkl-common-{{rpmversion}}
+    - intel-mkl-common-c-{{rpmversion}}
+    - intel-mkl-common-f-{{rpmversion}}
+    - intel-mkl-f95-common-{{rpmversion}}
+    - intel-mkl-core-{{rpmversion}}
+    - intel-mkl-core-c-{{rpmversion}}
+    - intel-mkl-core-f-{{rpmversion}}
