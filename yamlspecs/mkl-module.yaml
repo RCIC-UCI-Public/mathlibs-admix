@@ -5,26 +5,30 @@
 - package: mkl Module
   category: LIBRARIES
   toolpath: "{{rpmpath}}/{{toolclass}}/linux"  
-  release: 2
+  release: 3
   description: |
     This provides access to Intel's Math Kernel Libraries version {{version}}.
     You MAY have to execute the following command to set up all the environment variables
     to use the library
-         compilervars.sh -arch intel64 -platform linux
          mklvars.sh intel64
   module:
     prepend_path:
       - PATH {{toolpath}}/mkl/bin
       - PATH {{toolpath}}/bin
       - LD_LIBRARY_PATH  {{toolpath}}/mkl/lib/intel64
-      - LIBRARY_PATH  {{toolpath}}/lib
+      - LD_LIBRARY_PATH  {{toolpath}}/compiler/lib/intel64
+      - LD_LIBRARY_PATH  {{toolpath}}/tbb/lib
+      - LIBRARY_PATH  {{toolpath}}/tbb/lib
       - LIBRARY_PATH  {{toolpath}}/mkl/lib/intel64
+      - LIBRARY_PATH  {{toolpath}}/compiler/lib/intel64
       - CPATH {{toolpath}}/mkl/include
       - MKL_LIBRARIES {{toolpath}}/mkl/lib/intel64
       - MKL_INCLUDE_DIR {{toolpath}}/mkl/include
       - PKG_CONFIG_PATH {{toolpath}}/mkl/bin/pkgconfig
       - -d  " " LDFLAGS -L{{toolpath}}/mkl/lib/intel64
-      - -d  " " CPPFLAGS -I {{toolpath}}/mkl/include
+      - -d  " " LDFLAGS -L{{toolpath}}/compiler/lib/intel64
+      - -d  " " LDFLAGS -L{{toolpath}}/tbb/lib/intel64
+      - -d  " " CPPFLAGS -I{{toolpath}}/mkl/include
       - LD_RUN_PATH {{toolpath}}/mkl/lib
   requires:
     - "{{name}}_{{version}}"
