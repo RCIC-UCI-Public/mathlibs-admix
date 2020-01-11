@@ -13,9 +13,12 @@
     logname: "{{name}}/{{version}}/{{specs}}"
     path: "{{modinstdir}}/{{version}}"
     setenv:
-      - GSL_HOME root}}
+      - GSL_HOME {{root}}
     prereq:
       - "{{compiler}}/{{compiler_version}}"
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+      - -d  " " CPPFLAGS -I{{root}}/include
   requires:
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
     - rcic-module-support
