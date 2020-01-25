@@ -10,5 +10,10 @@
   module:
     setenv:
       - OPENBLAS_HOME {{root}}
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+      - -d  " " CPPFLAGS -I{{root}}/include
+      - -d  " " LDFLAGS -Wl,-rpath,{{root}}/lib
+      - -d  " " LDFLAGS -L{{root}}/lib
     prereq: 
       - "{{compiler}}/{{compiler_version}}"

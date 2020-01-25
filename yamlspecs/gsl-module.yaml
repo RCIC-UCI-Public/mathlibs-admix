@@ -19,6 +19,8 @@
     prepend_path:
       - "{{ pkg_defaults.module.prepend_path }}"
       - -d  " " CPPFLAGS -I{{root}}/include
+      - -d  " " LDFLAGS -Wl,-rpath,{{root}}/lib 
+      - -d  " " LDFLAGS -L{{root}}/lib
   requires:
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
     - rcic-module-support
