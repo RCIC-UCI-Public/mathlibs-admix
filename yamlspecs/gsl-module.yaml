@@ -6,7 +6,7 @@
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}-module"
   category: LIBRARIES
   release: 2
-  modinstdir: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{name}}"
+  modinstdir: "{{mod_defaults.path}}"
   specs: "{{compiler}}.{{compiler_version}}"
   module:
     name: "{{specs}}"
@@ -17,10 +17,8 @@
     prereq:
       - "{{compiler}}/{{compiler_version}}"
     prepend_path:
-      - "{{ pkg_defaults.module.prepend_path }}"
-      - -d  " " CPPFLAGS -I{{root}}/include
-      - -d  " " LDFLAGS -Wl,-rpath,{{root}}/lib 
-      - -d  " " LDFLAGS -L{{root}}/lib
+      - "{{mod_defaults.prepend_path}}"
+      - "{{mod_defaults.flagspath}}"
   requires:
     - "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
     - rcic-module-support
