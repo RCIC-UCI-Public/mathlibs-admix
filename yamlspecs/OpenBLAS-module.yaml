@@ -5,7 +5,7 @@
 - package: OpenBLAS Module
   category: LIBRARIES
   description: |
-    module for {{name}} version {{version}} compiled with {{compiler}} {{compiler_version}}.
+    module for {{name}} version {{version}} 
     Environment variables OPENBLAS_HOME={{root}} 
   module:
     setenv:
@@ -14,5 +14,3 @@
     prepend_path:
       - "{{mod_defaults.prepend_path}}"
       - "{{mod_defaults.flagspath}}"
-    prereq: 
-      - "{{compiler}}/{{compiler_version}}"

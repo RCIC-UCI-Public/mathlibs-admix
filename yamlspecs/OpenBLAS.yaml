@@ -13,8 +13,6 @@
     OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
   build:
     configure: echo 
-    modules: 
-      - "{{compiler}}/{{compiler_version}}"
     pkgmake: make 
     target: 
   install:
