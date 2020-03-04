@@ -12,24 +12,31 @@
     to use the library
          mklvars.sh intel64
   module:
+    setenv:  
+      - MKLROOT {{toolpath}}/mkl
+      - "{{shortname}}__PREFIX {{toolpath}}/mkl"
+      - "{{shortname}}__CPPFLAGS -I{{toolpath}}/mkl/include"
+      - "{{shortname}}__LDFLAGS \"-L{{toolpath}}/mkl/{{module.lib}}/intel64 -Wl,-rpath,{{toolpath}}/mkl/{{module.lib}}/intel64\""
     prepend_path:
       - PATH {{toolpath}}/mkl/bin
       - PATH {{toolpath}}/bin
+      - LD_LIBRARY_PATH  {{toolpath}}/tbb/lib/intel64
       - LD_LIBRARY_PATH  {{toolpath}}/mkl/lib/intel64
       - LD_LIBRARY_PATH  {{toolpath}}/compiler/lib/intel64
-      - LD_LIBRARY_PATH  {{toolpath}}/tbb/lib
-      - LIBRARY_PATH  {{toolpath}}/tbb/lib
+      - LIBRARY_PATH  {{toolpath}}/tbb/lib/intel64
       - LIBRARY_PATH  {{toolpath}}/mkl/lib/intel64
       - LIBRARY_PATH  {{toolpath}}/compiler/lib/intel64
       - CPATH {{toolpath}}/mkl/include
       - MKL_LIBRARIES {{toolpath}}/mkl/lib/intel64
       - MKL_INCLUDE_DIR {{toolpath}}/mkl/include
       - PKG_CONFIG_PATH {{toolpath}}/mkl/bin/pkgconfig
-      - -d  " " LDFLAGS -L{{toolpath}}/mkl/lib/intel64
-      - -d  " " LDFLAGS -L{{toolpath}}/compiler/lib/intel64
-      - -d  " " LDFLAGS -L{{toolpath}}/tbb/lib/intel64
-      - -d  " " CPPFLAGS -I{{toolpath}}/mkl/include
-      - LD_RUN_PATH {{toolpath}}/mkl/lib
+      - -d " " LDFLAGS -L{{toolpath}}/tbb/lib/intel64 -Wl,-rpath,{{toolpath}}/tbb/lib/intel64
+      - -d " " LDFLAGS -L{{toolpath}}/mkl/lib/intel64 -Wl,-rpath,{{toolpath}}/mkl/lib/intel64
+      - -d " " LDFLAGS -L{{toolpath}}/compiler/lib/intel64 -Wl,-rpath,{{toolpath}}/compiler/lib/intel64
+      - -d " " CPPFLAGS -I{{toolpath}}/mkl/include
+      - LD_RUN_PATH  {{toolpath}}/tbb/lib/intel64
+      - LD_RUN_PATH  {{toolpath}}/mkl/lib/intel64
+      - LD_RUN_PATH  {{toolpath}}/compiler/lib/intel64
   requires:
     - "{{name}}_{{version}}"
     - rcic-module-support
