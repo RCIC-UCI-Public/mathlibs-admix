@@ -13,6 +13,7 @@
     logname: "{{name}}/{{version}}/{{specs}}"
     path: "{{modinstdir}}/{{version}}"
     setenv:
+      - "{{mod_defaults.setenv}}"
       - GSL_HOME {{root}}
     prereq:
       - "{{compiler}}/{{compiler_version}}"
