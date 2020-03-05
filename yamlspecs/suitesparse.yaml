@@ -1,0 +1,37 @@
+!include rcic-package.yaml
+---
+- package: SuiteSparse
+  name: suitesparse 
+  versions: !include versions.yaml 
+  version: "{{versions.suitesparse}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+  vendor_source: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v{{version}}.{{extension}}
+  src_dir: SuiteSparse-{{version}}
+  description: |
+    A Suite of Sparse matrix packages at http://www.suitesparse.com
+    Source at https://github.com/DrTimothyAldenDavis/SuiteSparse
+  build:
+    configure: echo no configure required
+    modules: 
+      - "{{compiler}}/{{compiler_version}}"
+      - mkl/{{versions.mkl.version}}
+      - foundation
+    target: 
+    pkgmake: >
+      export LD_LIBRARY_PATH=$$LD_LIBRARY_PATH:`pwd`/lib;
+      make
+  install:
+    makeinstall: >
+      mkdir -p $(ROOT){{root}};
+      $(MAKE) install;
+      (cd GraphBLAS/build; cmake -P cmake_install.cmake);
+      rm -rf */.gitignore;
+      cp -p -r bin include lib lib64 share $(ROOT){{root}}
+      # The followgin prodices an error as libs are 
+      # linked to the libs in CWD which is in buildroot
+      #$(MAKE) INSTALL=$(ROOT){{root}} install;
+      #cd GraphBLAS/build;
+      #cmake -DCMAKE_INSTALL_PREFIX=$(ROOT){{root}} -P cmake_install.cmake
+  requires:
+    - "{{compiler}}_{{compiler_version}}" 

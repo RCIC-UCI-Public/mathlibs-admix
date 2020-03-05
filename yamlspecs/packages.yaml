@@ -7,5 +7,7 @@ build:
    - gsl-module
    - mkl
    - mkl-module
+   - suitesparse
+   - suitesparse-module
 manifest:
    - "{{build}}"

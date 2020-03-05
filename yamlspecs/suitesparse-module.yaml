@@ -1,0 +1,21 @@
+# Builds the module for suitesparse.
+!include suitesparse.yaml
+!include rcic-module.yaml
+---
+- package: suitesparse Module
+  pkgname: "{{name}}_{{version}}-module"
+  category: LIBRARIES
+  modinstdir: "{{mod_defaults.path}}"
+  module:
+    setenv:
+      - "{{mod_defaults.setenv}}"
+    prereq:
+      - "{{compiler}}/{{compiler_version}}"
+      - mkl/{{versions.mkl.version}}
+    prepend_path:
+      - "{{mod_defaults.flagspath}}"
+      - PATH {{root}}/bin
+      - LD_LIBRARY_PATH {{root}}/{{module.lib}}
+  requires:
+    - "{{name}}_{{version}}"
+    - rcic-module-support
