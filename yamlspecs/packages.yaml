@@ -1,12 +1,12 @@
 system:
 bootstrap:
+   - mkl
+   - mkl-module
 build:
    - OpenBLAS
    - OpenBLAS-module
    - gsl
    - gsl-module
-   - mkl
-   - mkl-module
    - suitesparse
    - suitesparse-module
 manifest:
