@@ -7,7 +7,7 @@
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  vendor_source: http://gnu.mirrors.pair.com/{{name}}/{{name}}-{{version}}.{{extension}}
+  vendor_source: ftp://ftp.gnu.org/gnu/{{name}}/{{name}}-{{version}}.{{extension}}
   description: >
     GNU Scientific Library 
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
