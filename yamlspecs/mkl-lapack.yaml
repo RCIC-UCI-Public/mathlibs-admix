@@ -1,0 +1,40 @@
+!include mkl.yaml
+!include rcic-package.yaml
+---
+- package: intel Math Kernel Library interfaces to LAPACK
+  name: mkl-lapack95
+  pkgname: "intel-{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+  src_dir: lapack95
+  description: |
+     Fortran 95 LAPACK interfaces are compiler-dependent. This library 
+     and modules are build with {{compiler}} {{version}} 
+  root: "{{rpmpath}}/{{toolclass}}/linux/mkl"
+  build:
+    modules: 
+      - "{{compiler}}/{{compiler_version}}"
+    configure: echo no configure required
+    pkgmake: echo will copy the source from RPM
+    target: 
+  install:
+     makeinstall: >
+        mkdir -p mkl/interfaces;
+        cp -p -r {{root}}/interfaces/{{src_dir}} mkl/interfaces;
+        cp -p -r {{root}}/include mkl;
+        cd mkl/interfaces/{{src_dir}};
+        sed -i 's/suflib   = a/suflib   = so/; s/ar -rs/$$(FC) -shared -o/; s/FOPTS =/FOPTS = -fPIC/' makefile;
+        make libintel64  FC=gfortran interface=lp64 INSTALL_DIR=../../build ;
+        make libintel64  FC=gfortran interface=ilp64 INSTALL_DIR=../../build ;
+        cd ../../build;
+        mkdir -p $(ROOT){{root}}/lib/intel64_lin;
+        cp -r lib/intel64/*.so $(ROOT){{root}}/lib/intel64_lin
+        # this adds *.mod files 
+        #mkdir -p $(ROOT){{root}};
+        #cp -r include $(ROOT){{root}};
+  files:
+    -  "{{root}}"
+  conflicts: intel-mkl-f95-{{rpmversion}}
+  requires:
+    - "{{compiler}}_{{compiler_version}}" 
+  rpm: !include rpm.extras.yaml

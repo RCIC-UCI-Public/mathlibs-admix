@@ -9,5 +9,10 @@ build:
    - gsl-module
    - suitesparse
    - suitesparse-module
+# this is a place holder for fortran 95 interface to build dynamic libs
+# libmkl_blas95 and libmkl_lapac95 for ilp64/lp64 interfaces
+# enable if/when needed.
+#  - mkl-blas
+#  - mkl-lapack
 manifest:
    - "{{build}}"
