@@ -10,3 +10,4 @@ mkl:
   rpmpath: /opt/intel
   toolclass: "compilers_and_libraries_{{versions.mkl.version}}"
 suitesparse: "5.7.1"
+eigen: "3.3.7"

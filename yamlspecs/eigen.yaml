@@ -1,0 +1,26 @@
+!include rcic-package.yaml
+---
+- package: Eigen
+  name: eigen 
+  versions: !include versions.yaml 
+  version: "{{versions.eigen}}"
+  pkgname: "{{name}}_{{version}}"
+  vendor_source: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/{{name}}-{{version}}.{{extension}}
+  description: |
+    Eigen is a C++ template library for linear algebra matrices, vectors,
+    numerical solvers, and related algorithms. It contains only headeer files.
+    See http://eigen.tuxfamily.org
+  builddir: ../builddir
+  build:
+    configure: echo no configure required
+    pkgmake: >
+      mkdir {{builddir}};
+      cd {{builddir}};
+      cmake -DCMAKE_INSTALL_PREFIX={{root}} ../{{name}}-{{version}}
+    modules: foundation
+    target:
+  install:
+    makeinstall: >
+      cd {{builddir}};
+      make DESTDIR=$(ROOT) install
+  rpm: !include rpm.extras.yaml
