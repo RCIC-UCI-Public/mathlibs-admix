@@ -4,7 +4,7 @@
   name: gsl 
   versions: !include versions.yaml 
   version: "{{versions.gsl}}"
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: ftp://ftp.gnu.org/gnu/{{name}}/{{name}}-{{version}}.{{extension}}

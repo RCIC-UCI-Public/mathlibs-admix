@@ -7,10 +7,8 @@
   vendor_source: http://github.com/xianyi/OpenBLAS/archive/v{{version}}.{{extension}}
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  pkgname: "{{name}}_{{version}}"
   description: |
-    OpenBLAS {{version}}. 
-    OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
+    OpenBLAS {{version}} is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
   build:
     configure: echo 
     pkgmake: make 

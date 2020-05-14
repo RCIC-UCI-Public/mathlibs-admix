@@ -3,25 +3,10 @@
 !include rcic-module.yaml
 ---
 - package: gsl Module
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}-module"
   category: LIBRARIES
   release: 2
-  modinstdir: "{{mod_defaults.path}}"
-  specs: "{{compiler}}.{{compiler_version}}"
   module:
-    name: "{{specs}}"
-    logname: "{{name}}/{{version}}/{{specs}}"
-    path: "{{modinstdir}}/{{version}}"
+    <<: *ModuleCompiler
     setenv:
-      - "{{mod_defaults.setenv}}"
+      - *Setenv
       - GSL_HOME {{root}}
-    prereq:
-      - "{{compiler}}/{{compiler_version}}"
-    prepend_path:
-      - "{{mod_defaults.prepend_path}}"
-      - "{{mod_defaults.flagspath}}"
-  requires:
-    - "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
-    - rcic-module-support
-  files:
-    - "{{modinstdir}}"

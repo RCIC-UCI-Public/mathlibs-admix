@@ -1,9 +1,8 @@
 !include mkl.yaml
-!include rcic-package.yaml
 ---
 - package: intel Math Kernel Library interfaces to LAPACK
   name: mkl-lapack95
-  pkgname: "intel-{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "intel-{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   src_dir: lapack95
@@ -32,8 +31,6 @@
         # this adds *.mod files 
         #mkdir -p $(ROOT){{root}};
         #cp -r include $(ROOT){{root}};
-  files:
-    -  "{{root}}"
   conflicts: intel-mkl-f95-{{rpmversion}}
   requires:
     - "{{compiler}}_{{compiler_version}}" 

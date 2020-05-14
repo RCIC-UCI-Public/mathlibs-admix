@@ -28,10 +28,11 @@
       (cd GraphBLAS/build; cmake -P cmake_install.cmake);
       rm -rf */.gitignore;
       cp -p -r bin include lib lib64 share $(ROOT){{root}}
-      # The followgin prodices an error as libs are 
+      # The following prodices an error as libs are 
       # linked to the libs in CWD which is in buildroot
       #$(MAKE) INSTALL=$(ROOT){{root}} install;
       #cd GraphBLAS/build;
       #cmake -DCMAKE_INSTALL_PREFIX=$(ROOT){{root}} -P cmake_install.cmake
   requires:
     - "{{compiler}}_{{compiler_version}}" 
+    - mkl_{{versions.mkl.version}}

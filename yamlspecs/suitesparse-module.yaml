@@ -3,19 +3,16 @@
 !include rcic-module.yaml
 ---
 - package: suitesparse Module
-  pkgname: "{{name}}_{{version}}-module"
   category: LIBRARIES
-  modinstdir: "{{mod_defaults.path}}"
   module:
-    setenv:
-      - "{{mod_defaults.setenv}}"
     prereq:
       - "{{compiler}}/{{compiler_version}}"
       - mkl/{{versions.mkl.version}}
     prepend_path:
-      - "{{mod_defaults.flagspath}}"
+      - *Flagspath
       - PATH {{root}}/bin
       - LD_LIBRARY_PATH {{root}}/{{module.lib}}
-  requires:
-    - "{{name}}_{{version}}"
-    - rcic-module-support
+    requires:
+      - *Requires
+      - "{{compiler}}_{{compiler_version}}-module"
+      - mkl_{{versions.mkl.version}}-module

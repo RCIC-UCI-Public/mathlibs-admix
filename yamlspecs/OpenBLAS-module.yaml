@@ -4,13 +4,10 @@
 ---
 - package: OpenBLAS Module
   category: LIBRARIES
-  description: |
-    module for {{name}} version {{version}} 
-    Environment variables OPENBLAS_HOME={{root}} 
   module:
     setenv:
-      - "{{mod_defaults.setenv}}"
+      - *Setenv
       - OPENBLAS_HOME {{root}}
     prepend_path:
-      - "{{mod_defaults.prepend_path}}"
-      - "{{mod_defaults.flagspath}}"
+      - *Prepend_path
+      - *Flagspath

@@ -9,8 +9,7 @@
   description: |
     This provides access to Intel's Math Kernel Libraries version {{version}}.
     You MAY have to execute the following command to set up all the environment variables
-    to use the library
-         mklvars.sh intel64
+    to use the library 'mklvars.sh intel64'
   module:
     setenv:  
       - MKLROOT {{toolpath}}/mkl
@@ -37,6 +36,3 @@
       - LD_RUN_PATH  {{toolpath}}/tbb/lib/intel64
       - LD_RUN_PATH  {{toolpath}}/mkl/lib/intel64
       - LD_RUN_PATH  {{toolpath}}/compiler/lib/intel64
-  requires:
-    - "{{name}}_{{version}}"
-    - rcic-module-support

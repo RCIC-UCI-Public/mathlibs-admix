@@ -4,7 +4,6 @@
   name: eigen 
   versions: !include versions.yaml 
   version: "{{versions.eigen}}"
-  pkgname: "{{name}}_{{version}}"
   vendor_source: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/{{name}}-{{version}}.{{extension}}
   description: |
     Eigen is a C++ template library for linear algebra matrices, vectors,
