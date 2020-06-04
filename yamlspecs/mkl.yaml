@@ -24,7 +24,10 @@
     target: 
   install:
      makeinstall: >
-        for p in $$(find rpm -type f -name '*rpm'); do mv $$p $(REDHAT.RPMS)/$(ARCH); done
+        if [ ! -d $(REDHAT.RPMS)/$(ARCH) ]; then mkdir -p $(REDHAT.RPMS)/$(ARCH); fi;
+        for p in $$(find rpm -type f -name '*rpm'); do 
+        echo $$p $(REDHAT.RPMS)/$(ARCH); install -m 644 -p $$p $(REDHAT.RPMS)/$(ARCH); done;
+        echo "RPMS moved"
   files:
     -  "{{root}}"
   requires:
