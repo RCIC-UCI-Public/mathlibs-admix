@@ -16,4 +16,5 @@ build:
 #  - mkl-blas
 #  - mkl-lapack
 manifest:
+   - "{{bootstrap}}"
    - "{{build}}"
