@@ -43,3 +43,5 @@
     - intel-mkl-core-f-{{rpmversion}}
     - intel-mkl-gnu-c-{{rpmversion}}
     - intel-mkl-gnu-f-{{rpmversion}}
+    - intel-mkl-gnu-rt-{{rpmversion}}
+    - intel-mkl-gnu-f-rt-{{rpmversion}}
