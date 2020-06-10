@@ -11,3 +11,4 @@
       - PKG_CONFIG_PATH {{root}}/{{module.lib}}/pkgconfig
       - EIGEN_INCLUDE_DIR {{root}}/include
       - -d " " CPPFLAGS -I{{root}}/include
+      - -d " " CPPFLAGS -I{{root}}/include/eigen3
