@@ -4,6 +4,7 @@
 ---
 - package: eigen Module
   category: LIBRARIES
+  release: 2
   module:
     setenv:
       - EIGEN_HOME {{root}}
