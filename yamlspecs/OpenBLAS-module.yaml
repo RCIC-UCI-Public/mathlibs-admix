@@ -4,6 +4,7 @@
 ---
 - package: OpenBLAS Module
   category: LIBRARIES
+  release: 2
   module:
     setenv:
       - *Setenv

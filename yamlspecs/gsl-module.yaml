@@ -4,7 +4,7 @@
 ---
 - package: gsl Module
   category: LIBRARIES
-  release: 2
+  release: 3
   module:
     <<: *ModuleCompiler
     setenv:

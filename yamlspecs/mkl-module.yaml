@@ -5,7 +5,7 @@
 - package: mkl Module
   category: LIBRARIES
   toolpath: "{{rpmpath}}/{{toolclass}}/linux"  
-  release: 3
+  release: 4
   description: |
     This provides access to Intel's Math Kernel Libraries version {{version}}.
     You MAY have to execute the following command to set up all the environment variables

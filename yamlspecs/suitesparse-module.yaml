@@ -4,6 +4,7 @@
 ---
 - package: suitesparse Module
   category: LIBRARIES
+  release: 2
   module:
     prereq:
       - "{{compiler}}/{{compiler_version}}"
@@ -14,5 +15,4 @@
       - LD_LIBRARY_PATH {{root}}/{{module.lib}}
     requires:
       - *Requires
-      - "{{compiler}}_{{compiler_version}}-module"
-      - mkl_{{versions.mkl.version}}-module
+      - "{{module.prereq}}"
