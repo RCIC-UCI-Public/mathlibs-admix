@@ -1,0 +1,12 @@
+# Builds the module for sundials.
+!include sundials.yaml
+!include rcic-module.yaml
+---
+- package: sundials Module
+  category: LIBRARIES
+  module:
+    setenv:
+      - *Setenv
+      - SUNDIALS_DIR {{root}}
+    prepend_path:
+      - LD_LIBRARY_PATH {{root}}/{{module.lib}}
