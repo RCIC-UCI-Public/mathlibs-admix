@@ -4,9 +4,16 @@
 ---
 - package: sundials Module
   category: LIBRARIES
+  release: 2
   module:
+    lib: lib64
     setenv:
       - *Setenv
       - SUNDIALS_DIR {{root}}
     prepend_path:
       - LD_LIBRARY_PATH {{root}}/{{module.lib}}
+    prereq:
+      - *ModuleCompiler_prereq
+    requires:
+      - *Requires
+      - "{{module.prereq}}"
