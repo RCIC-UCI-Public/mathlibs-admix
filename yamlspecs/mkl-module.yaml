@@ -1,4 +1,3 @@
-# Builds the module for mkl. 
 !include mkl.yaml
 !include rcic-module.yaml
 ---

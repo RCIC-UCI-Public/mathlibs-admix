@@ -18,10 +18,6 @@
      requirements. The Intel-supplied RPMS have their default locations of {{rpmpath}}, which might differ
      from the usual application path ({{pkg_defaults.app_path}}) on this system. 
   root: "{{rpmpath}}"
-  build:
-    configure: echo no configure required
-    pkgmake: echo Unpack Tarball only
-    target: 
   install:
      makeinstall: >
         if [ ! -d $(REDHAT.RPMS)/$(ARCH) ]; then mkdir -p $(REDHAT.RPMS)/$(ARCH); fi;

@@ -1,8 +1,7 @@
-# Builds the module for sundials.
 !include sundials.yaml
 !include rcic-module.yaml
 ---
-- package: sundials Module
+- package: sundials module
   category: LIBRARIES
   release: 2
   module:
@@ -13,7 +12,4 @@
     prepend_path:
       - LD_LIBRARY_PATH {{root}}/{{module.lib}}
     prereq:
-      - *ModuleCompiler_prereq
-    requires:
-      - *Requires
-      - "{{module.prereq}}"
+      - "{{build.base_modules}}"

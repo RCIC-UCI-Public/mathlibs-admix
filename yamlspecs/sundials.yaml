@@ -1,31 +1,25 @@
-!include rcic-package.yaml
+!include common.yaml
 ---
 - package: SUNDIALS
   name: sundials 
-  versions: !include versions.yaml 
   version: "{{versions.sundials}}"
-  compiler: "{{versions.compiler.name}}"
-  compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://computing.llnl.gov/projects/sundials/download/{{name}}-{{version}}.{{extension}}
   description: |
     SUNDIALS {{version}} is a SUite of Nonlinear and DIfferential/ALgebraic
     equation Solvers. See https://computing.llnl.gov/projects/sundials
   builddir: builddir
   build:
-    configure: echo no configure required
     pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
       cmake -DCMAKE_INSTALL_PREFIX={{root}} ..;
       make -j 16
-    modules: 
+    base_modules: 
       - "{{compiler}}/{{compiler_version}}"
+    modules: 
+      - "{{build.base_modules}}"
       - foundation
-    target:
   install:
     makeinstall: >
       cd {{builddir}};
       make DESTDIR=$(ROOT) install
-  requires:
-    - "{{compiler}}_{{compiler_version}}" 
-  rpm: !include rpm.extras.yaml

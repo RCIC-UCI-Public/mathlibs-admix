@@ -1,4 +1,3 @@
-# Builds the module for eigen.
 !include eigen.yaml
 !include rcic-module.yaml
 ---
@@ -13,3 +12,4 @@
       - EIGEN_INCLUDE_DIR {{root}}/include
       - -d " " CPPFLAGS -I{{root}}/include
       - -d " " CPPFLAGS -I{{root}}/include/eigen3
+    prereq:

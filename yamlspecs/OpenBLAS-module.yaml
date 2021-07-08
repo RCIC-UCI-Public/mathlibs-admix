@@ -1,8 +1,7 @@
-# Builds the module for OpenBLAS.
 !include OpenBLAS.yaml
 !include rcic-module.yaml
 ---
-- package: OpenBLAS Module
+- package: OpenBLAS module
   category: LIBRARIES
   release: 2
   module:

@@ -13,9 +13,6 @@
   build:
     modules: 
       - "{{compiler}}/{{compiler_version}}"
-    configure: echo no configure required
-    pkgmake: echo will copy the source from RPM
-    target: 
   install:
      makeinstall: >
         mkdir -p mkl/interfaces;
@@ -34,4 +31,3 @@
   conflicts: intel-mkl-f95-{{rpmversion}}
   requires:
     - "{{compiler}}_{{compiler_version}}" 
-  rpm: !include rpm.extras.yaml

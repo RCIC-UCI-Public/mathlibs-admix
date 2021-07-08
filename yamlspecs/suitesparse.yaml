@@ -1,23 +1,20 @@
-!include rcic-package.yaml
+!include common.yaml
 ---
 - package: SuiteSparse
   name: suitesparse 
-  versions: !include versions.yaml 
   version: "{{versions.suitesparse}}"
-  compiler: "{{versions.compiler.name}}"
-  compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v{{version}}.{{extension}}
   src_dir: SuiteSparse-{{version}}
   description: |
     A Suite of Sparse matrix packages at http://www.suitesparse.com
     Source at https://github.com/DrTimothyAldenDavis/SuiteSparse
   build:
-    configure: echo no configure required
-    modules: 
+    base_modules: 
       - "{{compiler}}/{{compiler_version}}"
       - mkl/{{versions.mkl.version}}
+    modules: 
+      - "{{build.base_modules}}"
       - foundation
-    target: 
     pkgmake: >
       export LD_LIBRARY_PATH=$$LD_LIBRARY_PATH:`pwd`/lib;
       make

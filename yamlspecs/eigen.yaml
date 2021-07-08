@@ -1,8 +1,8 @@
-!include rcic-package.yaml
+!include common.yaml
 ---
 - package: Eigen
   name: eigen 
-  versions: !include versions.yaml 
+  release: 2
   version: "{{versions.eigen}}"
   vendor_source: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/{{name}}-{{version}}.{{extension}}
   description: |
@@ -11,15 +11,12 @@
     See http://eigen.tuxfamily.org
   builddir: ../builddir
   build:
-    configure: echo no configure required
     pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
       cmake -DCMAKE_INSTALL_PREFIX={{root}} ../{{name}}-{{version}}
     modules: foundation
-    target:
   install:
     makeinstall: >
       cd {{builddir}};
       make DESTDIR=$(ROOT) install
-  rpm: !include rpm.extras.yaml

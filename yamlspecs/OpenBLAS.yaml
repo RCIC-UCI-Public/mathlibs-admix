@@ -1,18 +1,14 @@
-!include rcic-package.yaml
+!include common.yaml
 ---
 - package: OpenBLAS 
   name: OpenBLAS 
-  versions: !include versions.yaml
   version: "{{versions.OpenBLAS}}"
   vendor_source: http://github.com/xianyi/OpenBLAS/archive/v{{version}}.{{extension}}
-  compiler: "{{versions.compiler.name}}"
-  compiler_version: "{{versions.compiler.version}}"
   description: |
     OpenBLAS {{version}} is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
   build:
-    configure: echo 
-    pkgmake: make 
-    target: 
+    modules: 
+  extras: "*md  Goto*txt"
   install:
     makeinstall: $(MAKE) DESTDIR=$(ROOT) PREFIX={{root}} install
-    installextra: $(INSTALL) -m 644  *md  Goto*txt $(ROOT)/{{root}}
+  requires:

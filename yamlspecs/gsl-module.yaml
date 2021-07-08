@@ -1,4 +1,3 @@
-# Builds the module for gsl.
 !include gsl.yaml
 !include rcic-module.yaml
 ---

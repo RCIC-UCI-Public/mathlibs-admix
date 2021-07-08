@@ -1,18 +1,13 @@
-# Builds the module for suitesparse.
 !include suitesparse.yaml
 !include rcic-module.yaml
 ---
-- package: suitesparse Module
+- package: suitesparse module
   category: LIBRARIES
   release: 2
   module:
-    prereq:
-      - "{{compiler}}/{{compiler_version}}"
-      - mkl/{{versions.mkl.version}}
     prepend_path:
       - *Flagspath
       - PATH {{root}}/bin
       - LD_LIBRARY_PATH {{root}}/{{module.lib}}
-    requires:
-      - *Requires
-      - "{{module.prereq}}"
+    prereq:
+      - "{{build.base_modules}}"
