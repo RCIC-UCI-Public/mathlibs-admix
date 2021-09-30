@@ -11,7 +11,7 @@
   build:
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
-      - mkl/{{versions.mkl.version}}
+      - mkl/{{versions.mkl}}
     modules: 
       - "{{build.base_modules}}"
       - foundation
@@ -32,4 +32,4 @@
       #cmake -DCMAKE_INSTALL_PREFIX=$(ROOT){{root}} -P cmake_install.cmake
   requires:
     - "{{compiler}}_{{compiler_version}}" 
-    - mkl_{{versions.mkl.version}}
+    - mkl_{{versions.mkl}}

@@ -3,10 +3,10 @@
 - package: intel Math Kernel Library
   name: mkl 
   versions: !include versions.yaml 
-  version: "{{versions.mkl.version}}"
-  rpmpath: "{{versions.mkl.rpmpath}}"
-  rpmversion: "{{versions.mkl.rpmversion}}"
-  toolclass: "{{versions.mkl.toolclass}}"
+  version: "{{versions.mkl}}"
+  rpmpath: "{{versions.mkl_rpmpath}}"
+  rpmversion: "{{versions.mkl_rpmversion}}"
+  toolclass: "compilers_and_libraries_{{version}}"
   release: 2
   src_dir: l_{{name}}_{{version}}
   src_tarball: "{{src_dir}}.{{extension}}"
