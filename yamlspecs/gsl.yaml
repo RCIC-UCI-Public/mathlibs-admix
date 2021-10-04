@@ -9,6 +9,7 @@
     GNU Scientific Library 
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   build:
+    configure: ./configure
     modules: 
       - "{{compiler}}/{{compiler_version}}"
   extras: README* COPYING AUTHORS
