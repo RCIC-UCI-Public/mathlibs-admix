@@ -8,6 +8,7 @@
   build:
     modules:
       - "{{compiler}}/{{compiler_version}}"
+    pkgmake: unset MAKEFLAGS; make
   extras:
   install:
      makeinstall: >
