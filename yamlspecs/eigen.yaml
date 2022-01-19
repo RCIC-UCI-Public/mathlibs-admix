@@ -4,7 +4,7 @@
   name: eigen 
   release: 2
   version: "{{versions.eigen}}"
-  vendor_source: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/{{name}}-{{version}}.{{extension}}
+  vendor_source: https://gitlab.com/libeigen/eigen/-/archive/{{version}}/{{name}}-{{version}}.{{extension}}
   description: |
     Eigen is a C++ template library for linear algebra matrices, vectors,
     numerical solvers, and related algorithms. It contains only headeer files.
