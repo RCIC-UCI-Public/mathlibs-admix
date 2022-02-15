@@ -1,0 +1,10 @@
+!include packages.yaml
+---
+versions: versions-centos8.yaml
+build:
+   - OpenBLAS
+   - OpenBLAS-module
+   - eigen
+   - eigen-module
+manifest:
+   - "{{build}}"

@@ -1,0 +1,4 @@
+!include versions.yaml
+---
+OpenBLAS: "0.3.19"
+eigen: "3.4.0"
