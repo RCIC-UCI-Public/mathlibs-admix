@@ -14,3 +14,4 @@ manifest:
    - "{{build}}"
 sets:
    - centos8
+   - 2023

@@ -1,0 +1,9 @@
+!include packages.yaml
+---
+versions: versions-2023.yaml
+bootstrap:
+build:
+   - OpenBLAS
+   - OpenBLAS-module
+manifest:
+   - "{{build}}"
