@@ -1,0 +1,12 @@
+# these are prereqs for building R 4.3.2
+!include packages.yaml
+---
+versions: versions-2024.yaml
+bootstrap:
+build:
+   - OpenBLAS
+   - OpenBLAS-module
+   - glpk
+   - glpk-module
+manifest:
+   - "{{build}}"
