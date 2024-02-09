@@ -6,5 +6,6 @@ mkl_rpmversion: "2019.5-281"
 mkl_rpmpath: /opt/intel
 gsl: "2.6"
 eigen: "3.3.7"
+glpk: "5.0"
 #suitesparse: "5.7.1"
 #sundials: "5.6.1"

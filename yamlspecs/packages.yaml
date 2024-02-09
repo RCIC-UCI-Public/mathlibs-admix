@@ -9,6 +9,8 @@ build:
    - gsl-module
    - eigen
    - eigen-module
+   - glpk
+   - glpk-module
 manifest:
    - "{{bootstrap}}"
    - "{{build}}"

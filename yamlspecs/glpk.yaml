@@ -1,0 +1,18 @@
+!include common.yaml
+---
+- package: glpk
+  name: glpk
+  version: "{{versions.glpk}}"
+  vendor_source: https://ftp.gnu.org/gnu/glpk/{{name}}-{{version}}.{{extension}}
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  description: |
+    The GLPK (GNU Linear Programming Kit) package {{version}} is intended for solving large-scale
+    linear programming (LP), mixed integer programming (MIP), and other related problems.
+    It is a set of routines written in ANSI C and organized in the form of a callable library
+  build:
+    configure: ./configure
+    configure_args: --prefix={{root}} 
+    modules:
+      - "{{compiler}}/{{compiler_version}}"
+    pkgmake: make -j 16

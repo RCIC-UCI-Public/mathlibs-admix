@@ -1,0 +1,10 @@
+!include glpk.yaml
+!include rcic-module.yaml
+---
+- package: glpk module
+  category: GENOMICS
+  module:
+    <<: *ModuleCompiler
+    prepend_path:
+      - *Prepend_path
+      - *Flagspath
