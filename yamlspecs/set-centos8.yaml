@@ -2,5 +2,13 @@
 ---
 versions: versions-centos8.yaml
 bootstrap:
+build:
+   - OpenBLAS
+   - OpenBLAS-module
+   - gsl
+   - gsl-module
+   - eigen
+   - eigen-module
+
 manifest:
    - "{{build}}"
