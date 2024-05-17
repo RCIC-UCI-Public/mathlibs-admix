@@ -3,3 +3,8 @@
 ---
 OpenBLAS: "0.3.26"
 glpk: "5.0"
+oneAPI:
+  nfspath: "/data/opt/apps"
+  version: "2024.0.1"
+  toolversion: "2024.0"
+  tbbversion: "2021.11"

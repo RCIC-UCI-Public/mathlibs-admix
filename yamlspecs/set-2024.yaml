@@ -8,5 +8,6 @@ build:
    - OpenBLAS-module
    - glpk
    - glpk-module
+   - mkl-oneapi-module
 manifest:
    - "{{build}}"

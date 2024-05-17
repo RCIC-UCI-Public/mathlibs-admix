@@ -1,0 +1,59 @@
+!include rcic-package.yaml
+!include rcic-module.yaml
+---
+- package: mkl oneapi module
+  name: mkl
+  category: LIBRARIES
+  versions: !include versions.yaml
+  version: "{{versions.oneAPI.version}}"
+  root: "{{versions.oneAPI.nfspath}}/intel/oneAPI/{{version}}"
+  tbbversion: "{{versions.oneAPI.tbbversion}}"
+  tbbpath: "{{root}}/tbb/{{tbbversion}}"
+  toolversion: "{{versions.oneAPI.toolversion}}"
+  toolpath: "{{root}}/compiler/{{toolversion}}"
+  mklpath: "{{root}}/mkl/{{toolversion}}"
+  description: |
+    This module provides access to 
+    (1) Intel(R) oneAPI Math Kernel Library (oneMKL) {{toolversion}}
+    (2) Intel(R) oneAPI Threading Building Block {{tbbversion}}
+    (3) Intel(R) oneAPI Compiler redistributable libraries {{toolversion}}
+  module:
+    setenv:  
+      - ONEAPI_ROOT {{root}}
+      - CMPLR_ROOT {{toolpath}}
+      - TBBROOT {{tbbpath}}
+      - MKLROOT {{mklpath}}
+      - "{{shortname}}__PREFIX {{mklpath}}"
+      - "{{shortname}}__CPPFLAGS -I{{mklpath}}/include"
+      - "{{shortname}}__LDFLAGS \"-L{{mklpath}}/lib -Wl,-rpath,{{mklpath}}/lib\""
+    prepend_path:
+      - CMAKE_PREFIX_PATH {{tbbpath}}/lib/cmake
+      - CMAKE_PREFIX_PATH {{mklpath}}/lib/cmake
+      - CPATH {{tbbpath}}/include
+      - CPATH {{mklpath}}/include
+      - LIBRARY_PATH {{tbbpath}}/lib
+      - LIBRARY_PATH {{mklpath}}/lib
+      - LD_LIBRARY_PATH {{tbbpath}}/lib
+      - LD_LIBRARY_PATH {{toolpath}}/lib
+      - LD_LIBRARY_PATH {{toolpath}}/opt/compiler/lib
+      - LD_LIBRARY_PATH {{mklpath}}/lib
+      - LD_RUN_PATH {{toolpath}}/lib
+      - LD_RUN_PATH {{toolpath}}/opt/compiler/lib
+      - LD_RUN_PATH {{mklpath}}/lib
+      - LD_RUN_PATH {{tbbpath}}/lib
+      - DIAGUTIL_PATH {{toolpath}}/etc/compiler/sys_check/sys_check.sh
+      - NLSPATH {{mklpath}}/share/locale/%l_%t/%N
+      - PKG_CONFIG_PATH {{tbbpath}}/lib/pkgconfig
+      - PKG_CONFIG_PATH {{mklpath}}/lib/pkgconfig
+      - MKL_LIBRARIES {{mklpath}}/lib
+      - MKL_INCLUDE_DIR {{mklpath}}/include
+      - -d " " LDFLAGS -L{{toolpath}}/lib -Wl,-rpath,{{toolpath}}/lib
+      - -d " " LDFLAGS -L{{mklpath}}/lib -Wl,-rpath,{{mklpath}}/lib
+      - -d " " LDFLAGS -L{{tbbpath}}/lib -Wl,-rpath,{{tbbpath}}/lib
+  provides:
+    - "{{name}}/{{version}}"
+    - "{{name}}_{{version}}"
+    - libmkl_core.so.2()(64bit)
+    - libmkl_gnu_thread.so.2()(64bit)
+    - libmkl_intel_lp64.so.2()(64bit)
+    - libsycl.so.7()(64bit)
