@@ -11,11 +11,12 @@
     See http://eigen.tuxfamily.org
   builddir: ../builddir
   build:
+    modules:
+      - cmake/{{versions.cmake}}
     pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
       cmake -DCMAKE_INSTALL_PREFIX={{root}} ../{{name}}-{{version}}
-    modules: foundation/{{versions.foundation}}
   install:
     makeinstall: >
       cd {{builddir}};
