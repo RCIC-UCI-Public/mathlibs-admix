@@ -16,7 +16,7 @@
     pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
-      cmake -DCMAKE_INSTALL_PREFIX={{root}} ../{{name}}-{{version}}
+      cmake -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_INSTALL_PREFIX={{root}} ../{{name}}-{{version}}
   install:
     makeinstall: >
       cd {{builddir}};
