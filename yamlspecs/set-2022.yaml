@@ -1,7 +1,6 @@
 !include packages.yaml
 ---
-versions: versions-centos8.yaml
-bootstrap:
+versions: versions-2022.yaml
 build:
    - OpenBLAS
    - OpenBLAS-module
@@ -9,6 +8,3 @@ build:
    - gsl-module
    - eigen
    - eigen-module
-
-manifest:
-   - "{{build}}"

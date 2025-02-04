@@ -2,12 +2,9 @@
 !include packages.yaml
 ---
 versions: versions-2024.yaml
-bootstrap:
 build:
    - OpenBLAS
    - OpenBLAS-module
    - glpk
    - glpk-module
    - mkl-oneapi-module
-manifest:
-   - "{{build}}"
