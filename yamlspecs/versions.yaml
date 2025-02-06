@@ -1,5 +1,6 @@
 !include site.yaml
 ---
+admix: mathlibs-admix
 OpenBLAS: "0.3.6"
 mkl: "2019.5.281"
 mkl_rpmversion: "2019.5-281"
