@@ -1,8 +1,7 @@
+!include packages.yaml
 ---
-system:
-bootstrap:
+versions: versions.yaml
 build:
-build0:
    - mkl
    - mkl-module
    - OpenBLAS
@@ -13,11 +12,3 @@ build0:
    - eigen-module
    - glpk
    - glpk-module
-manifest:
-   - "{{bootstrap}}"
-   - "{{build}}"
-sets:
-   - base
-   - "2022"
-   - "2023"
-   - "2024"
