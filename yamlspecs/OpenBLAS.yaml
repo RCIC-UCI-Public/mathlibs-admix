@@ -1,19 +1,18 @@
 !include common.yaml
 ---
-- package: OpenBLAS 
-  name: OpenBLAS 
+- package: OpenBLAS
+  name: OpenBLAS
   version: "{{versions.OpenBLAS}}"
   openblas_arch: HASWELL
-  
   vendor_source: http://github.com/xianyi/OpenBLAS/archive/v{{version}}.{{extension}}
   description: |
-    OpenBLAS {{version}} is an optimized BLAS library based on GotoBLAS2 1.13 BSD version
+    OpenBLAS is an optimized BLAS library.
+    It is based on GotoBLAS2 1.13 BSD version.
   build:
-    # On very modern AMD processors, one test fails for version 0.3.6.. Don't build tests.
+    # On very modern AMD processors, one test fails for version 0.3.6. Don't build tests.
     targets: !ifeq "{{version}},0.3.6,libs netlib shared,"
-    modules: 
+    modules:
     pkgmake: unset MAKEFLAGS; make TARGET={{openblas_arch}} {{build.targets}}
-
   extras: "*md  Goto*txt"
   install:
     makeinstall: $(MAKE) TARGET={{openblas_arch}} DESTDIR=$(ROOT) PREFIX={{root}} install

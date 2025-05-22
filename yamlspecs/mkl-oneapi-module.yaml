@@ -13,12 +13,13 @@
   toolpath: "{{root}}/compiler/{{toolversion}}"
   mklpath: "{{root}}/mkl/{{toolversion}}"
   description: |
-    This module provides access to 
+    Intel Math Kernel Library.
+    This module provides access to
     (1) Intel(R) oneAPI Math Kernel Library (oneMKL) {{toolversion}}
     (2) Intel(R) oneAPI Threading Building Block {{tbbversion}}
     (3) Intel(R) oneAPI Compiler redistributable libraries {{toolversion}}
   module:
-    setenv:  
+    setenv:
       - ONEAPI_ROOT {{root}}
       - CMPLR_ROOT {{toolpath}}
       - TBBROOT {{tbbpath}}

@@ -1,8 +1,8 @@
 !include rcic-package.yaml
 ---
 - package: intel Math Kernel Library
-  name: mkl 
-  versions: !include versions.yaml 
+  name: mkl
+  versions: !include versions.yaml
   version: "{{versions.mkl}}"
   rpmpath: "{{versions.mkl_rpmpath}}"
   rpmversion: "{{versions.mkl_rpmversion}}"
@@ -13,15 +13,15 @@
   extension: tgz
   vendor_source: http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15816/{{src_tarball}}
   description: |
-     Intel Math Kernel Library version {{version}}. This is a meta package that unpacks the Intel
-     public distribution tarball to extract the RPMs, and then lists a foundation set of the RPMs as 
+     Intel Math Kernel Library. This is a meta package that unpacks the Intel
+     public distribution tarball to extract the RPMs, and then lists a foundation set of the RPMs as
      requirements. The Intel-supplied RPMS have their default locations of {{rpmpath}}, which might differ
-     from the usual application path ({{pkg_defaults.app_path}}) on this system. 
+     from the usual application path ({{pkg_defaults.app_path}}) on this system.
   root: "{{rpmpath}}"
   install:
      makeinstall: >
         if [ ! -d $(REDHAT.RPMS)/$(ARCH) ]; then mkdir -p $(REDHAT.RPMS)/$(ARCH); fi;
-        for p in $$(find rpm -type f -name '*rpm'); do 
+        for p in $$(find rpm -type f -name '*rpm'); do
         echo $$p $(REDHAT.RPMS)/$(ARCH); install -m 644 -p $$p $(REDHAT.RPMS)/$(ARCH); done;
         echo "RPMS moved"
   files:

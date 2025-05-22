@@ -1,19 +1,19 @@
 !include common.yaml
 ---
-- package: Gnu Scientific Library 
-  name: gsl 
+- package: Gnu Scientific Library
+  name: gsl
   version: "{{versions.gsl}}"
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   vendor_source: ftp://ftp.gnu.org/gnu/{{name}}/{{name}}-{{version}}.{{extension}}
   description: >
-    GNU Scientific Library 
+    GNU Scientific Library
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   build:
     configure: ./configure
-    modules: 
+    modules:
       - "{{compiler}}/{{compiler_version}}"
   extras: README* COPYING AUTHORS
   install:
      makeinstall: >
        make DESTDIR=$(ROOT) install
-     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}}

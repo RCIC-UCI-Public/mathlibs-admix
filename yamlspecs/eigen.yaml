@@ -1,14 +1,14 @@
 !include common.yaml
 ---
 - package: Eigen
-  name: eigen 
+  name: eigen
   release: 2
   version: "{{versions.eigen}}"
   vendor_source: https://gitlab.com/libeigen/eigen/-/archive/{{version}}/{{name}}-{{version}}.{{extension}}
   description: |
-    Eigen is a C++ template library for linear algebra matrices, vectors,
-    numerical solvers, and related algorithms. It contains only headeer files.
-    See http://eigen.tuxfamily.org
+    Eigen is a high-level C++ library of template headers. It is used for
+    linear algebra matrices, vectors, numerical solvers, and related algorithms.
+    It contains only headeer files. See http://eigen.tuxfamily.org
   builddir: ../builddir
   build:
     modules:
