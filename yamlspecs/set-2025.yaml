@@ -1,0 +1,5 @@
+!include packages.yaml
+---
+versions: versions-2025.yaml
+build:
+   - mkl-oneapi-module
