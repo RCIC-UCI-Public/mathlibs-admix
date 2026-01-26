@@ -8,6 +8,7 @@ mkl_rpmpath: /opt/intel
 gsl: "2.6"
 eigen: "3.3.7"
 glpk: "5.0"
+glpk_flags:
 # gcc is needed for an older version of gsl
 compiler:
   name: gcc

@@ -1,0 +1,9 @@
+!include versions.yaml
+!include updates8.yaml
+---
+OpenBLAS: "0.3.31"
+glpk: "5.0"
+glpk_flags: "CFLAGS=-std=gnu17"
+compiler:
+  name: gcc
+  version: "15.2.0"

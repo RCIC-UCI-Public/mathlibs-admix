@@ -5,6 +5,8 @@ ls -l RPMS/*/ | grep rpm | awk '{printf "%-15.f %s\n", int($5/100)*100, $9}'
 7700            OpenBLAS_0.3.21-module-0.3.21-2.x86_64.rpm
 7469500         OpenBLAS_0.3.26-0.3.26-1.x86_64.rpm
 7700            OpenBLAS_0.3.26-module-0.3.26-2.x86_64.rpm
+7922300         OpenBLAS_0.3.31-0.3.31-1.x86_64.rpm
+7700            OpenBLAS_0.3.31-module-0.3.31-2.x86_64.rpm
 6875000         OpenBLAS_0.3.6-0.3.6-1.x86_64.rpm
 7700            OpenBLAS_0.3.6-module-0.3.6-2.x86_64.rpm
 886200          eigen_3.3.7-3.3.7-2.x86_64.rpm
@@ -13,6 +15,8 @@ ls -l RPMS/*/ | grep rpm | awk '{printf "%-15.f %s\n", int($5/100)*100, $9}'
 7800            eigen_3.4.0-module-3.4.0-3.x86_64.rpm
 781800          glpk_5.0_gcc_11.2.0-5.0-1.x86_64.rpm
 8100            glpk_5.0_gcc_11.2.0-module-5.0-1.x86_64.rpm
+579000          glpk_5.0_gcc_15.2.0-5.0-1.x86_64.rpm
+8100            glpk_5.0_gcc_15.2.0-module-5.0-1.x86_64.rpm
 758200          glpk_5.0_gcc_8.4.0-5.0-1.x86_64.rpm
 8000            glpk_5.0_gcc_8.4.0-module-5.0-1.x86_64.rpm
 2085000         gsl_2.6_gcc_8.4.0-2.6-1.x86_64.rpm

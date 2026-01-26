@@ -1,0 +1,10 @@
+# these are prereqs for building R
+!include packages.yaml
+---
+versions: versions-2026.yaml
+build:
+   - OpenBLAS
+   - OpenBLAS-module
+   - glpk
+   - glpk-module
+   - mkl-oneapi-module

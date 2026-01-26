@@ -10,9 +10,10 @@
     The GLPK (GNU Linear Programming Kit) package.
     It is intended for solving large-scale linear programming (LP),
     mixed integer programming (MIP), and other related problems.
+# extraopts: !ifeq "{{compiler_version}},15.2.0,CFLAGS=-std=gnu17,"
   build:
     configure: ./configure
-    configure_args: --prefix={{root}}
+    configure_args: --prefix={{root}} {{versions.glpk_flags}}
     modules:
       - "{{compiler}}/{{compiler_version}}"
     pkgmake: make -j 16
