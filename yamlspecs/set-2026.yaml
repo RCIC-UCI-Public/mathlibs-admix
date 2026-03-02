@@ -8,3 +8,5 @@ build:
    - glpk
    - glpk-module
    - mkl-oneapi-module
+   - eigen
+   - eigen-module
