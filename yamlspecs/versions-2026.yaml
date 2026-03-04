@@ -8,3 +8,4 @@ compiler:
   name: gcc
   version: "15.2.0"
 eigen: "5.0.1"
+gsl: "2.8"
