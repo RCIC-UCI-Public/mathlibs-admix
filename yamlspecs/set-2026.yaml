@@ -7,7 +7,6 @@ build:
    - OpenBLAS-module
    - glpk
    - glpk-module
-   - mkl-oneapi-module
    - gsl
    - gsl-module
    - eigen
